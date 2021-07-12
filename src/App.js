@@ -10,6 +10,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore } from "redux";
 import reducer from "./store/reducer";
 
+import TestFun from './components/testComponent';
+
 
 const store = createStore(reducer, composeWithDevTools());
 
@@ -25,6 +27,7 @@ function App() {
         <div>
           <h1>Hello Style!</h1>
           <p>Add a little style!.</p>
+          <TestFun/>
         </div>
         <DatePicker onChange={handleChange} />
         <div style={{ marginTop: 16 }}>
