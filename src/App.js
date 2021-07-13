@@ -16,6 +16,7 @@ import NavBar from './components/NavBar';
 import MovieCarousel from './components/Carousel';
 
 import Homepage from './containers/Homepage';
+import MovielistPage from './containers/MovielistPage';
 
 
 const store = createStore(reducer, composeWithDevTools());
@@ -27,6 +28,7 @@ function App() {
         <NavBar/>
         <Switch>
           <Route path="/" exact component={Homepage} />
+          <Route path="/movie" exact component={MovielistPage} />
         </Switch>
       </Router>
     </Provider>
