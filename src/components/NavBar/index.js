@@ -1,63 +1,81 @@
 import { useState } from 'react';
 
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { SearchOutlined, CloseOutlined } from '@ant-design/icons';
+import SearchInput from '../SearchInput';
+import logo from '../../asset/TMDB.png';
+import './index.scss';
 
 
 const NavBar = () => {
     const [selected, setSelected] = useState("");
+    const [searchFlag, setSearchFlag] = useState(false);
 
-    const handleClick = (e) => {
-        setSelected(e.key)
+    const handleSearchClick = () => {
+        setSearchFlag(!searchFlag);
+    }
+
+    const handleMenuClick = (e) => {
+        setSelected(e.key);
     }
 
     return (
-        <Menu onClick={handleClick} selectedKeys={[selected]} mode="horizontal">
-            <Menu.SubMenu key="Movie" title="Movies">
-                <Menu.Item key="popular">
-                    Popular
-                </Menu.Item>
-                <Menu.Item key="playing">
-                    Now Playing
-                </Menu.Item>
-                <Menu.Item key="upcoming">
-                    Upcoming
-                </Menu.Item>
-                <Menu.Item key="top">
-                    Top Rated
-                </Menu.Item>
-            </Menu.SubMenu>
-            <Menu.SubMenu key="TV" title="TV Shows">
-                <Menu.Item key="popular_TV">
-                    Popular
-                </Menu.Item>
-                <Menu.Item key="playing_TV">
-                    Airing Today
-                </Menu.Item>
-                <Menu.Item key="on_TV">
-                    On TV
-                </Menu.Item>
-                <Menu.Item key="top_TV">
-                    Top Rated
-                </Menu.Item>
-            </Menu.SubMenu>
-            <Menu.SubMenu key="MyList" title="My List">
-                <Menu.Item key="liked">
-                    Liked List
-                </Menu.Item>
-                <Menu.Item key="blocked">
-                    Blocked List
-                </Menu.Item>
-            </Menu.SubMenu>
-            <Menu.SubMenu key="External" title="External Links">
-                <Menu.Item key="IMDB">
-                    <a href="https://www.themoviedb.org/" target="_blank">IMDB</a>
-                </Menu.Item>
-                <Menu.Item key="MovieDB">
-                    <a href="https://www.imdb.com/" target="_blank">The Movie DB</a>
-                </Menu.Item>
-            </Menu.SubMenu>
-        </Menu>
+        <div>
+            <Link to="/"><img src={logo} alt="homepage" className="logo"/></Link>
+            {!searchFlag ? 
+            <SearchOutlined className="search-icon" onClick={handleSearchClick}/>: 
+            <>
+                <SearchInput className="search-bar"/>
+                <CloseOutlined className="search-icon" onClick={handleSearchClick}/>
+            </>}
+            <Menu onClick={handleMenuClick} selectedKeys={selected} mode="horizontal" theme="dark" className="nav-bar">
+                <Menu.SubMenu key="Movie" title="Movies" className="">
+                    <Menu.Item key="popular">
+                        <Link to="/movie">Popular</Link>
+                    </Menu.Item>
+                    <Menu.Item key="playing">
+                        <Link to="/movie/now-playing">Now Playing</Link>
+                    </Menu.Item>
+                    <Menu.Item key="upcoming">
+                        <Link to="/movie/upcoming">Upcoming</Link>
+                    </Menu.Item>
+                    <Menu.Item key="top">
+                        <Link to="/moive/top-rated">Top Rated</Link>
+                    </Menu.Item>
+                </Menu.SubMenu>
+                <Menu.SubMenu key="TV" title="TV Shows">
+                    <Menu.Item key="popular_TV">
+                        <Link to="/tv">Popular</Link>Popular
+                    </Menu.Item>
+                    <Menu.Item key="playing_TV">
+                        <Link to="/tv/airing-today">Airing Today</Link>
+                    </Menu.Item>
+                    <Menu.Item key="on_TV">
+                        <Link to="/tv/on-the-air">On TV</Link>
+                    </Menu.Item>
+                    <Menu.Item key="top_TV">
+                        <Link to="/tv/top-rated">Top Rated</Link>
+                    </Menu.Item>
+                </Menu.SubMenu>
+                <Menu.SubMenu key="MyList" title="My List">
+                    <Menu.Item key="liked">
+                        <Link to="/my-list/liked">Liked List</Link>
+                    </Menu.Item>
+                    <Menu.Item key="blocked">
+                        <Link to="/my-list/blocked">Blocked List</Link>
+                    </Menu.Item>
+                </Menu.SubMenu>
+                <Menu.SubMenu key="External" title="External Links">
+                    <Menu.Item key="IMDB">
+                        <a href="https://www.themoviedb.org/">The Movie DB</a>
+                    </Menu.Item>
+                    <Menu.Item key="MovieDB">
+                        <a href="https://www.imdb.com/">IMDB</a>
+                    </Menu.Item>
+                </Menu.SubMenu>
+            </Menu>
+        </div>
       );
 }
 
