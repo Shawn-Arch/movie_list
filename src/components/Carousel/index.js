@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { movie } from "../../util/data";
 import { v4 as uuidv4} from 'uuid'
 import "./index.scss"
-import { Player } from "video-react"
+// import { Player } from "video-react"
 
 const MovieCarousel = () => {
     const [movies,setMovies] = useState([]);
