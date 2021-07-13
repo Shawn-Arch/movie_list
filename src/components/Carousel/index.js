@@ -1,7 +1,9 @@
 import { Carousel } from "antd";
 import { useEffect, useState } from "react";
-
 import { movie } from "../../util/data";
+import { v4 as uuidv4} from 'uuid'
+import "./index.scss"
+
 
 const MovieCarousel = () => {
     const [movies,setMovies] = useState([]);
@@ -26,9 +28,9 @@ const MovieCarousel = () => {
         <Carousel autoplay>
             {movies.map((item)=>{
                 return (
-                <div>
-                    <span>{item.title}</span>
-                {/* <img src={movies.results[0].poster_path} alt="img text"></img> */}
+                <div key={uuidv4()} className="CarouselContainer">
+                    <span className='title'>{item.title}</span>
+                    <img src={item.backdrop_path} alt="img text"></img>
                 </div>);
             })}
         </Carousel>
