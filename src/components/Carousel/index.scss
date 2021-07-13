@@ -1,0 +1,34 @@
+.CarouselContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.background {
+    // display: none;
+    opacity: 70%;
+    position: relative;
+    width: 80%;
+}
+
+.title {
+    position: absolute;
+    left: 20%;
+    top: 5%;
+    font-size: 40px;
+}
+
+.poster {
+    position: absolute;
+    top: 18%;
+    left: 17%;
+    width: 19%;
+}
+
+.video {
+    // display: ;
+    position: absolute;
+    padding: 0!important;
+    // top: 18%;
+    // left: 17%;
+}
