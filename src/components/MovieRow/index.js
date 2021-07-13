@@ -17,8 +17,8 @@ const MovieRow = ({title, movieList}) => {
     <>
         <p className="list-title">{title}</p>
         <div className="container">
-            <LeftOutlined className="icon left-icon" onClick={handleLeftClick}/>
-            <RightOutlined className="icon right-icon" onClick={handleRightClick}/>
+            {startIndex !== 0 && <LeftOutlined className="icon left-icon" onClick={handleLeftClick}/>}
+            {startIndex !== 28 && <RightOutlined className="icon right-icon" onClick={handleRightClick}/>}
             <Row justify="space-around">
             {movieList.map((item, index)=>{
                 if (startIndex <= index && index < startIndex + 7) {
