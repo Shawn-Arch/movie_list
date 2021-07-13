@@ -12,6 +12,7 @@ import reducer from "./store/reducer";
 
 
 import NavBar from './components/NavBar';
+import MovieCarousel from './components/Carousel';
 
 
 
@@ -25,17 +26,10 @@ function App() {
   // };
   return (
     <Provider store={store}>
-      <NavBar/>
-      {/* <div style={{ width: 400, margin: '100px auto' }}>
-        <div>
-          <h1>Hello Style!</h1>
-          <p>Add a little style!.</p>
-        </div>
-        <DatePicker onChange={handleChange} />
-        <div style={{ marginTop: 16 }}>
-          Selected Date: {date ? date.format('YYYY-MM-DD') : 'None'}
-        </div>
-      </div> */}
+      <>
+        <NavBar/>
+        <MovieCarousel/>
+      </>
     </Provider>
   );
 }
