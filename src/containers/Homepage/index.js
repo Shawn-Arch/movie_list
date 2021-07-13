@@ -1,6 +1,8 @@
-
+import MovieCarousel from '../../components/Carousel'
 const Homepage = () => {
-    return(<></>);
+    return(<>
+        <MovieCarousel/>
+    </>);
 }
 
 export default Homepage;
