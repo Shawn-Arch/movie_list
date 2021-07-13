@@ -13,6 +13,7 @@ import reducer from "./store/reducer";
 
 
 import NavBar from './components/NavBar';
+import MovieCarousel from './components/Carousel';
 
 import Homepage from './containers/Homepage';
 
