@@ -1,7 +1,9 @@
 import MovieCarousel from '../../components/Carousel'
+import Sort from '../../components/Sort'
 const Homepage = () => {
     return(<>
-        <MovieCarousel/>
+        {/* <MovieCarousel/> */}
+        <Sort/>
     </>);
 }
 
