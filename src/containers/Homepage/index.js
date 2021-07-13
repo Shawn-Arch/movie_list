@@ -5,6 +5,7 @@ const Homepage = () => {
         <MovieCarousel/>
     
     </>);
+
 }
 
 export default Homepage;
