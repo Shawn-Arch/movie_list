@@ -3,6 +3,7 @@ class movie {
         this.title = data.title;
         this.poster_path = "https://image.tmdb.org/t/p/w185" + data.poster_path;
         this.backdrop_path = "https://image.tmdb.org/t/p/w1280" + data.backdrop_path;
+        this.release_date = data.release_date;
     }
     setMovieByData(data) {
         this.title = data.title;
