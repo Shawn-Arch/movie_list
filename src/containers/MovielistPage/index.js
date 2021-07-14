@@ -6,6 +6,7 @@ import { actions } from "../../constant/actionCreators.js"
 
 import MoiveList from '../../components/MovieList';
 import {movie} from "../../util/data"
+import Sort from "../../components/Sort"
 
 import "./index.scss";
 
@@ -35,7 +36,9 @@ const MovielistPage = ({list_name, API, popularList, addPageToList})=> {
     return (
     <>
         <Layout>
-            <Sider className="page-sider"></Sider>
+            <Sider className="page-sider">
+                <Sort/>
+            </Sider>
             <Layout>
                 <Header>
                     <Pagination 
