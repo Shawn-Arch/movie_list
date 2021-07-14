@@ -18,6 +18,8 @@ import MovieCarousel from './components/Carousel';
 import Homepage from './containers/Homepage';
 import MovielistPage from './containers/MovielistPage';
 
+import { APIs } from './constant/constant';
+
 
 const store = createStore(reducer, composeWithDevTools());
 
@@ -27,8 +29,12 @@ function App() {
       <Router>
         <NavBar/>
         <Switch>
-          <Route path="/" exact component={Homepage} />
-          <Route path="/movie" exact component={MovielistPage} />
+          <Route path="/" exact>
+            <Homepage />
+          </Route>
+          <Route path="/movie" exact>
+            <MovielistPage API={APIs.POPULAR_MOVIES} list_name="popularList"/>
+          </Route>
         </Switch>
       </Router>
     </Provider>
