@@ -22,7 +22,7 @@ const NavBar = () => {
 
     return (
         <div>
-            <Link to="/"><img src={logo} alt="homepage" className="logo"/></Link>
+            <Link to="/"><img src={logo} alt="homepage" className="logo" onClick={()=>{setSelected("")}}/></Link>
             {!searchFlag ? 
             <SearchOutlined className="search-icon" onClick={handleSearchClick}/>: 
             <>
@@ -41,12 +41,12 @@ const NavBar = () => {
                         <Link to="/movie/upcoming">Upcoming</Link>
                     </Menu.Item>
                     <Menu.Item key="top">
-                        <Link to="/moive/top-rated">Top Rated</Link>
+                        <Link to="/movie/top-rated">Top Rated</Link>
                     </Menu.Item>
                 </Menu.SubMenu>
                 <Menu.SubMenu key="TV" title="TV Shows">
                     <Menu.Item key="popular_TV">
-                        <Link to="/tv">Popular</Link>Popular
+                        <Link to="/tv">Popular</Link>
                     </Menu.Item>
                     <Menu.Item key="playing_TV">
                         <Link to="/tv/airing-today">Airing Today</Link>

@@ -7,7 +7,7 @@ import {actions} from "../../constant/actionCreators.js"
 import { APIs } from "../../constant/constant";
 
 const Homepage = (props) => {
-    const {popularList, trendingList, addPageToPopularList, addPageToTrendingList} = props;
+    const {popularList, trendingList, addPageToList} = props;
     const fetchData = (api_url, name, page, addFunction) => {
         fetch(api_url+page)
             .then(res=>res.json())
@@ -18,10 +18,10 @@ const Homepage = (props) => {
             })
     }
     useEffect(()=>{
-        fetchData(APIs.POPULAR_MOVIES, "popularList", 1, addPageToPopularList)
-        fetchData(APIs.TRENDING_MOVIES, "trendingList", 1, addPageToTrendingList)
-        fetchData(APIs.POPULAR_MOVIES, "popularList", 2, addPageToPopularList)
-        fetchData(APIs.TRENDING_MOVIES, "trendingList", 2, addPageToTrendingList)
+        fetchData(APIs.POPULAR_MOVIES, "movie_popularList", 1, addPageToList)
+        fetchData(APIs.TRENDING_MOVIES, "movie_trendingList", 1, addPageToList)
+        fetchData(APIs.POPULAR_MOVIES, "movie_popularList", 2, addPageToList)
+        fetchData(APIs.TRENDING_MOVIES, "movie_trendingList", 2, addPageToList)
     },[]);
 
     return(
@@ -35,14 +35,13 @@ const Homepage = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        popularList: state.popularList,
-        trendingList: state.trendingList
+        popularList: state.movie_popularList,
+        trendingList: state.movie_trendingList
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        addPageToPopularList: (name, page, value) => dispatch(actions.addPageToList(name, page, value)),
-        addPageToTrendingList: (name, page, value) => dispatch(actions.addPageToList(name, page, value)),
+        addPageToList: (name, page, value) => dispatch(actions.addPageToList(name, page, value))
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
