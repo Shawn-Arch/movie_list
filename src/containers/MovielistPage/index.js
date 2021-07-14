@@ -12,22 +12,26 @@ import "./index.scss";
 
 const { Header, Footer, Sider, Content } = Layout;
 
-const MovielistPage = ({list_name, API, popularList, addPageToList})=> {
+const MovielistPage = ({list_name, API, listToShow, addPageToList})=> {
     const [curPage, setCurPage] = useState(1);
-    const [totalPage, setTotalPage] = useState(0);
-    useEffect(()=>{
-        if (popularList[curPage] === undefined) {
-            fetch(API+curPage)
+    const [totalPage, setTotalPage] = useState(10000);
+
+    const fetchData = () => {
+        fetch(API+curPage)
             .then(res=>res.json())
             .then(data=>{
-                console.log(data)
                 setTotalPage(data.total_pages);
                 addPageToList(list_name, curPage, data.results.map((item)=>{
                     return new movie(item);
                 }));
             })
+    };
+
+    useEffect(()=>{
+        if (listToShow[curPage] === undefined) {
+            fetchData();
         }
-    },[curPage])
+    },[curPage, list_name]);
 
     function onChange(pageNumber) {
         setCurPage(pageNumber);
@@ -50,7 +54,7 @@ const MovielistPage = ({list_name, API, popularList, addPageToList})=> {
                         onChange={onChange} />
                 </Header>
                 <Content>
-                    <MoiveList list={popularList[curPage] || []}/>
+                    <MoiveList list={listToShow[curPage] || []}/>
                 </Content>
                 <Footer>Footer</Footer>
             </Layout>
@@ -58,15 +62,18 @@ const MovielistPage = ({list_name, API, popularList, addPageToList})=> {
     </>);
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    const { list_name } = ownProps;
     return {
-        popularList: state.popularList
+        listToShow: state[list_name]
     };
 };
+
 const mapDispatchToProps = (dispatch) => {
     return {
         addPageToList: (name, page, value) => dispatch(actions.addPageToList(name, page, value)),
     };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(MovielistPage);
 
