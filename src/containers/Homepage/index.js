@@ -12,12 +12,9 @@ const Homepage = (props) => {
         fetch(api_url+page)
             .then(res=>res.json())
             .then(data=>{
-                console.log(data);
-                const arr = [];
-                data.results.forEach((item)=>{
-                    arr.push(new movie(item));
-                })
-                addFunction(name, page, arr);
+                addFunction(name, page, data.results.map((item)=>{
+                    return new movie(item);
+                }));
             })
     }
     useEffect(()=>{
