@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {LeftOutlined, RightOutlined} from '@ant-design/icons';
-import { Row, Col, Divider } from 'antd';
+import { Row, Col } from 'antd';
 import MovieCard from '../MovieCard';
 
 import "./index.scss"

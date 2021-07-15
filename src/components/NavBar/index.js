@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Menu } from 'antd';
 import { SearchOutlined, CloseOutlined } from '@ant-design/icons';
 import SearchInput from '../SearchInput';

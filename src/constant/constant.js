@@ -7,7 +7,11 @@ const APIs = {
     POPULAR_TV: "https://api.themoviedb.org/3/tv/popular?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=",
     AIRING_TODAY_TV: "https://api.themoviedb.org/3/tv/airing_today?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=",
     ON_THE_AIR_TV: "https://api.themoviedb.org/3/tv/on_the_air?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=",
-    TOP_RATED_TV: "https://api.themoviedb.org/3/tv/top_rated?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page="
+    TOP_RATED_TV: "https://api.themoviedb.org/3/tv/top_rated?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=",
+    DETAILS_MOVIE_PART1: "https://api.themoviedb.org/3/movie/",
+    DETAILS_MOVIE_PART2: "?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US",
+    CAST_MOVIE_PART1: "https://api.themoviedb.org/3/movie/",
+    CAST_MOVIE_PART2: "/credits?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US"
 }
 
 export {APIs};

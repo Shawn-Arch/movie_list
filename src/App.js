@@ -17,6 +17,7 @@ import MovieCarousel from './components/Carousel';
 
 import Homepage from './containers/Homepage';
 import MovielistPage from './containers/MovielistPage';
+import MovieDetailsPage from './containers/MovieDetailsPage';
 
 import { APIs } from './constant/constant';
 
@@ -62,6 +63,9 @@ function App() {
           <Route path="/my-list/blocked" exact>
             <MovielistPage API={APIs.POPULAR_MOVIES} list_name="blocked_list"/>
           </Route> */}
+          <Route path="/movie/:id" >
+            <MovieDetailsPage />
+          </Route>
         </Switch>
       </Router>
     </Provider>

@@ -9,6 +9,7 @@ class movie {
         }
         this.poster_path = "https://image.tmdb.org/t/p/w185" + data.poster_path;
         this.backdrop_path = "https://image.tmdb.org/t/p/w1280" + data.backdrop_path;
+        this.vote_average = data.vote_average;
         if (data.release_date === undefined) {
             this.release_date = data.first_air_date;
         } 
@@ -16,13 +17,24 @@ class movie {
             this.release_date = data.release_date;
         }
     }
-    setMovieByData(data) {
-        this.id = data.id;
-        this.title = data.title;
-        this.poster_path = "https://image.tmdb.org/t/p/w185" + data.poster_path;
-        this.backdrop_path = "https://image.tmdb.org/t/p/w1280" + data.backdrop_path;
+    setDetails(data) {
+        this.runtime = data.runtime;
+        this.video = data.video;
+        this.production_companies = data.production_companies;
+        this.genres = data.genres;
+        this.adult = data.adult;
+        this.tagline = data.tagline;
+        this.overview = data.overview;
         return this;
     }
 }
 
-export {movie};
+class person {
+    constructor(data) {
+        this.name = data.name;
+        this.character = data.character;
+        this.profile_path = "https://image.tmdb.org/t/p/w185" + data.profile_path;
+    }
+}
+
+export {movie, person};
