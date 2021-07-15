@@ -2,7 +2,7 @@ import MovieCard from "../MovieCard";
 
 import { Row, Col } from 'antd';
 
-const MoiveList = ({list}) => {
+const MovieList = ({list}) => {
     const arr = list.reduce((acc, item, index)=>{
         if(index % 5 === 0) {
             acc.push([item]);
@@ -27,4 +27,4 @@ const MoiveList = ({list}) => {
     </>);
 }
 
-export default MoiveList;
+export default MovieList;
