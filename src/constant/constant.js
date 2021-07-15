@@ -7,7 +7,20 @@ const APIs = {
     POPULAR_TV: "https://api.themoviedb.org/3/tv/popular?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=",
     AIRING_TODAY_TV: "https://api.themoviedb.org/3/tv/airing_today?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=",
     ON_THE_AIR_TV: "https://api.themoviedb.org/3/tv/on_the_air?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=",
-    TOP_RATED_TV: "https://api.themoviedb.org/3/tv/top_rated?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page="
+    TOP_RATED_TV: "https://api.themoviedb.org/3/tv/top_rated?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=",
+
+    BASE_URL_BEGIN:'https://api.themoviedb.org/3/discover/movie?api_key=a264be857d5395c70bd597cc0e9a04b5&language=en-US&sort_by=',
+    POPULARITY_DESCENDING:'popularity.desc',
+    POPULARITY_ASCENDING:'popularity.asc',
+    RATING_DESCENDING:'vote_average.desc',
+    RATING_ASCENDING:'vote_average.asc',
+    RELEASE_DATA_DESCENDING:'release_date.desc',
+    RELEASE_DATA_ASCENDING:'release_date.asc',
+    TITLE_A_Z:'original_title.asc',
+    TITLE_Z_A:'original_title.desc',
+    BASE_URL_MID:'&include_adult=false&include_video=false&page=',
+    BASE_URL_END:'&with_watch_monetization_types=flatrate'
+
 }
 
 export {APIs};
