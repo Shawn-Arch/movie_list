@@ -29,7 +29,9 @@ const APIs = {
     BASE_URL_MID:'&include_adult=false&include_video=false&page=',
     BASE_URL_END:'&with_watch_monetization_types=flatrate',
     MOVIE_SIDE_CONTENT_PART1:'https://api.themoviedb.org/3/movie/',
-    MOVIE_SIDE_CONTENT_PART2:'?api_key=a264be857d5395c70bd597cc0e9a04b5&language=en-US'
+    MOVIE_SIDE_CONTENT_PART2:'?api_key=a264be857d5395c70bd597cc0e9a04b5&language=en-US',
+    MOVIE_VIDEO_URL_PART1:'https://api.themoviedb.org/3/movie/',
+    MOVIE_VIDEO_URL_PART2:'/videos?api_key=a264be857d5395c70bd597cc0e9a04b5&language=en-US'
 
 }
 

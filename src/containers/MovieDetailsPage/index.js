@@ -105,7 +105,7 @@ const MovieDetailsPage = (props) => {
             <Layout>
                 <Content>
                     <ItemRow type="person" list={movieCast} title="Top Billed Cast" maxPage={4}/>
-                    <VideoContainer/>
+                    <VideoContainer id={id}/>
                     <ReviewComponent review={movieReview}/>
                     <Recommedation movies = {movieRecommedation}/>
                 </Content>
