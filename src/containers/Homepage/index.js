@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import MovieRow from "../../components/MovieRow";
+import ItemRow from "../../components/ItemRow";
 import {movie} from "../../util/data";
 
 import {actions} from "../../constant/actionCreators.js"
@@ -27,9 +27,9 @@ const Homepage = (props) => {
     return(
     <>
         {popularList[1] !== undefined && popularList[2] !== undefined &&
-        <MovieRow movieList={[...popularList[1], ...popularList[2]]} title="What's popular"/>}
+        <ItemRow list={[...popularList[1], ...popularList[2]]} title="What's popular" maxPage={5} type="movie"/>}
         {trendingList[1] !== undefined && trendingList[2] !== undefined &&
-        <MovieRow movieList={[...trendingList[1], ...trendingList[2]]} title="Trending"/>}
+        <ItemRow list={[...trendingList[1], ...trendingList[2]]} title="Trending" maxPage={5} type="movie"/>}
     </>);
 }
 

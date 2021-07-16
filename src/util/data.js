@@ -16,6 +16,8 @@ class movie {
         else {
             this.release_date = data.release_date;
         }
+        this.liked = false;
+        this.blocked = false;
     }
     setDetails(data) {
         this.runtime = data.runtime;
@@ -26,6 +28,14 @@ class movie {
         this.tagline = data.tagline;
         this.overview = data.overview;
         return this;
+    }
+    like() {
+        this.liked = true;
+        return this
+    }
+    block() {
+        this.blocked = true;
+        return this
     }
 }
 
