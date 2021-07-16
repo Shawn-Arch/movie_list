@@ -1,9 +1,25 @@
+import { useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
+import { APIs } from '../../constant/constant';
+import './index.scss'
+const VideoContainer = ({id})=>{
+    const [videos,setVideos] = useState(null);
+    const fetchVideo = () => {
+      fetch(APIs.MOVIE_VIDEO_URL_PART1+id+APIs.MOVIE_VIDEO_URL_PART2)
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data.results[0].key)
+          setVideos(data.results);
+        })
+    }
 
-const VideoContainer = ()=>{
+    useEffect(()=>{
+      fetchVideo();
+    },[])
+
     const opts = {
-        height: '300',
-        width: '450',
+        // height: '100%',
+        width: '100%',
         playerVars: {
           // https://developers.google.com/youtube/player_parameters
           autoplay: 0,
@@ -15,10 +31,9 @@ const VideoContainer = ()=>{
         event.target.pauseVideo();
     }
     return (
-        <>
-            <p>Media</p>
-            <YouTube videoId="2g811Eo7K8U" opts={opts}/>
-        </>)
+        <div className='VideoSize'>
+            {videos===null?<></>:<YouTube className="innerSize" videoId={videos[0].key} opts={opts}/>}
+        </div>)
 }
 
 export default VideoContainer;
