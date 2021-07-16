@@ -6,7 +6,7 @@ import PeopleCard from '../PeopleCard';
 
 import "./index.scss"
 
-const ItemRow = ({type, title, maxPage,list}) => {
+const ItemRow = ({type, title, maxPage, list}) => {
     const [curPage, setCurPage] = useState(0);
     if (!Array.isArray(list)) return(<></>);
 
@@ -20,8 +20,8 @@ const ItemRow = ({type, title, maxPage,list}) => {
     <>
         <p className="list-title">{title}</p>
         <div className="container">
-            {<LeftOutlined className="icon left-icon" onClick={handleLeftClick}/>}
-            {<RightOutlined className="icon right-icon" onClick={handleRightClick}/>}
+            {curPage !== 0 && <LeftOutlined className="icon left-icon" onClick={handleLeftClick}/>}
+            {curPage !== maxPage && <RightOutlined className="icon right-icon" onClick={handleRightClick}/>}
             <Row gutter={16} wrap={false} style={{right: curPage+"00%", transition: "right 1s"}}>
                 {list.map((item)=>{
                     return (

@@ -12,6 +12,10 @@ const APIs = {
     DETAILS_MOVIE_PART2: "?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US",
     CAST_MOVIE_PART1: "https://api.themoviedb.org/3/movie/",
     CAST_MOVIE_PART2: "/credits?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US",
+    REVIEW_MOVIE_PART1: "https://api.themoviedb.org/3/movie/",
+    REVIEW_MOVIE_PART2: "/reviews?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=1",
+    RECOMMENDATION_MOVIE_PART1: "https://api.themoviedb.org/3/movie/",
+    RECOMMENDATION_MOVIE_PART2: "/recommendations?api_key=37f380c84b46fa72f453af5706c78a44&language=en-US&page=1",
 
     BASE_URL_BEGIN:'https://api.themoviedb.org/3/discover/movie?api_key=a264be857d5395c70bd597cc0e9a04b5&language=en-US&sort_by=',
     POPULARITY_DESCENDING:'popularity.desc',
