@@ -5,16 +5,22 @@ import { useParams } from "react-router-dom";
 import { APIs } from "../../constant/constant"
 import { movie, person } from "../../util/data";
 import ItemRow from "../../components/ItemRow";
+import MovieDetailsSideContent from "../../components/MovieDetailsSideContent"
 import VideoContainer from "../../components/VideoContainer";
 import ReviewComponent from "../../components/ReviewComponent";
 import Recommedation from "../../components/Recommendation";
-const { Sider, Content } = Layout;
-
+const { Header, Footer, Sider, Content } = Layout;
 
 const MovieDetailsPage = (props) => {
     const {id} = useParams();
     const [movieDetails, setMovieDetails] = useState(null);
     const [movieCast, setMovieCast] = useState(null);
+    const [sideContent, setSideContent] = useState({
+        status:'',
+        spoken_languages:[],
+        budget:'',
+        revenue:''
+    })
     const [movieReview, setMovieReview] = useState(null);
     const [movieRecommedation, setMovieRecommendation] = useState(null);
     const fetchDetails = () => {
@@ -35,6 +41,24 @@ const MovieDetailsPage = (props) => {
             })
     }
 
+    const fetchSideContent = () => {
+        fetch(APIs.MOVIE_SIDE_CONTENT_PART1+id+APIs.MOVIE_SIDE_CONTENT_PART2)
+            .then(res=>res.json())
+            .then(data=>{
+                // console.log(data.spoken_languages)
+                setSideContent({
+                    status:data.status,
+                    spoken_languages:data.spoken_languages,
+                    budget:data.budget,
+                    revenue:data.revenue
+                })
+            })
+    }
+
+    useEffect(()=>{
+        console.log(sideContent)
+    },[sideContent])
+    
     const fetchReviews = () =>{
         fetch(APIs.REVIEW_MOVIE_PART1 + id + APIs.REVIEW_MOVIE_PART2)
             .then(res=>res.json())
@@ -68,6 +92,7 @@ const MovieDetailsPage = (props) => {
     useEffect(()=>{
         fetchDetails();
         fetchCast();
+        fetchSideContent();
         fetchReviews();
         fetchRecommendation();
     },[id])
@@ -84,7 +109,9 @@ const MovieDetailsPage = (props) => {
                     <ReviewComponent review={movieReview}/>
                     <Recommedation movies = {movieRecommedation}/>
                 </Content>
-                <Sider>Sider</Sider>
+                <Sider>
+                    <MovieDetailsSideContent sideContent={sideContent}></MovieDetailsSideContent>
+                </Sider>
             </Layout>
         </Layout>);
 }

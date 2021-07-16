@@ -27,7 +27,9 @@ const APIs = {
     TITLE_A_Z:'original_title.asc',
     TITLE_Z_A:'original_title.desc',
     BASE_URL_MID:'&include_adult=false&include_video=false&page=',
-    BASE_URL_END:'&with_watch_monetization_types=flatrate'
+    BASE_URL_END:'&with_watch_monetization_types=flatrate',
+    MOVIE_SIDE_CONTENT_PART1:'https://api.themoviedb.org/3/movie/',
+    MOVIE_SIDE_CONTENT_PART2:'?api_key=a264be857d5395c70bd597cc0e9a04b5&language=en-US'
 
 }
 
