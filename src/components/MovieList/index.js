@@ -2,28 +2,17 @@ import MovieCard from "../MovieCard";
 
 import { Row, Col } from 'antd';
 
-const MovieList = ({list}) => {
-    const arr = list.reduce((acc, item, index)=>{
-        if(index % 5 === 0) {
-            acc.push([item]);
-        } else {
-            acc[Math.floor(index / 5)].push(item);
-        }
-        return acc;
-    },[]);
+const MovieList = ({list, list_type}) => {
     return (
     <>
-        {arr.map((item)=>{
-            return(
-                <Row justify="space-around" key={new Date() + Math.random()}>
-                    {item.map(i=>{
-                        return(
-                            <Col span={4} key={new Date() + Math.random()}>
-                                <MovieCard movie={i}/>
-                            </Col>)
-                    })}
-                </Row>);
-        })}
+        <Row type="flex" gutter={[24,24]}>
+            {list.map((i)=>{
+                return(
+                    <Col style={{width: "20%"}} key={new Date() + Math.random()}>
+                        <MovieCard movie={i} list_type={list_type}/>
+                    </Col>);
+            })}
+        </Row>
     </>);
 }
 

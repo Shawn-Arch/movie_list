@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import ItemRow from "../../components/ItemRow";
 import {movie} from "../../util/data";
-
+import MovieCarousel from "../../components/Carousel"
 import {actions} from "../../constant/actionCreators.js"
 import { APIs } from "../../constant/constant";
+import "./index.scss"
 
 const Homepage = (props) => {
     const {popularList, trendingList, addPageToList} = props;
@@ -26,10 +27,13 @@ const Homepage = (props) => {
 
     return(
     <>
-        {popularList[1] !== undefined && popularList[2] !== undefined &&
-        <ItemRow list={[...popularList[1], ...popularList[2]]} title="What's popular" maxPage={5} type="movie"/>}
-        {trendingList[1] !== undefined && trendingList[2] !== undefined &&
-        <ItemRow list={[...trendingList[1], ...trendingList[2]]} title="Trending" maxPage={5} type="movie"/>}
+        <MovieCarousel/>
+        <div className="homepage-container">
+            {popularList[1] !== undefined && popularList[2] !== undefined &&
+            <ItemRow list={[...popularList[1], ...popularList[2]]} title="What's popular" maxPage={5} type="movie"/>}
+            {trendingList[1] !== undefined && trendingList[2] !== undefined &&
+            <ItemRow list={[...trendingList[1], ...trendingList[2]]} title="Trending" maxPage={5} type="movie"/>}
+        </div>
     </>);
 }
 

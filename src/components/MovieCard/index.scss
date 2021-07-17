@@ -1,0 +1,55 @@
+.card {
+    position: relative;
+}
+
+.ant-card {
+    border-radius: 5%;
+}
+.ant-card-cover img {
+    border-top-right-radius: 5%;
+    border-top-left-radius: 5%;
+    height: 20vw;
+}
+
+.vote {
+    position: absolute;
+    background-color: black;
+    top: 63%;
+    left: 10%;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.ant-progress-circle .ant-progress-text {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.blocked {
+    opacity: 0.1;
+}
+
+.icon-card {
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    display: none;
+}
+
+.block {
+    left: 15px;
+    color: blue;
+}
+
+.like {
+    right: 15px;
+    color: #eb2f96;
+}
+
+.icon-card svg {
+    width: 30px;
+    height: 30px;
+}
+
+.card:hover .icon-card {
+    display: inline-block;
+}
