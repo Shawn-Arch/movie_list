@@ -1,4 +1,5 @@
 import { Menu, Dropdown, Button} from 'antd'
+import './index.scss'
 const { SubMenu } = Menu;
 
 const Sort = ({sortType,setSortType,setCurPage}) => {
@@ -51,7 +52,7 @@ const Sort = ({sortType,setSortType,setCurPage}) => {
     
     return(
         <Dropdown overlay={menu}>
-            <Button>{sortType}</Button>
+            <Button size='large' className='Button'>{sortType}</Button>
         </Dropdown>
     )
 }
