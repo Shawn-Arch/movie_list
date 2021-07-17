@@ -17,7 +17,7 @@ const ItemRow = ({type, title, maxPage, list}) => {
         setCurPage(curPage-1)
     }
     return (
-    <>
+    <div className="row">
         <p className="list-title">{title}</p>
         <div className="container">
             {curPage !== 0 && <LeftOutlined className="icon left-icon" onClick={handleLeftClick}/>}
@@ -31,7 +31,7 @@ const ItemRow = ({type, title, maxPage, list}) => {
                 })}
             </Row>
         </div>
-    </>);
+    </div>);
 }
 
 export default ItemRow;

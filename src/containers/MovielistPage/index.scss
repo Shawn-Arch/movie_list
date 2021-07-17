@@ -1,3 +1,13 @@
-.ant-layout-sider, .ant-layout-header {
+.ant-layout-sider, .ant-layout-header, .ant-layout-content {
     background-color: white;
+}
+
+.ant-pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.movie-list-title {
+    font-size: xx-large;
+    font-weight: bolder;
 }

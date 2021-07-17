@@ -10,9 +10,9 @@ import Sort from "../../components/Sort"
 import { APIs } from '../../constant/constant'
 import "./index.scss";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
 
-const MovielistPage = ({list_name, API, listToShow, addPageToList})=> {
+const MovielistPage = ({title, list_type, list_name, API, listToShow, nums, addPageToList, addResultsNumToList})=> {
     const [curPage, setCurPage] = useState(1);
     const [totalPage, setTotalPage] = useState(10000);
 
@@ -24,7 +24,7 @@ const MovielistPage = ({list_name, API, listToShow, addPageToList})=> {
         fetch(API+curPage)
             .then(res=>res.json())
             .then(data=>{
-                setTotalPage(data.total_pages);
+                addResultsNumToList(list_name, data.total_results);
                 addPageToList(list_name, curPage, data.results.map((item)=>{
                     return new movie(item);
                 }));
@@ -33,7 +33,7 @@ const MovielistPage = ({list_name, API, listToShow, addPageToList})=> {
 
     useEffect(()=>{
         if (sortType==='Filter') {
-            if (listToShow[curPage] === undefined) {
+            if (listToShow[curPage] === undefined || nums === undefined) {
                 fetchData();
             }
         }
@@ -79,36 +79,32 @@ const MovielistPage = ({list_name, API, listToShow, addPageToList})=> {
                         [page]: data.results.map((item)=>new movie(item))
                     };
                 });
-                // console.log(data.results)
             })
     ]
-
-    useEffect(()=>{
-        console.log("sortType:"+sortType,sortedList)
-        // fetchSortData(sortType);
-    },[sortType])
 
     return (
     <>
         <Layout>
-            <Sider className="page-sider">
-                <Sort setSortType={setSortType} sortType={sortType} setCurPage={setCurPage}/>
-            </Sider>
+            <Header className="movie-list-title">{title}</Header>
             <Layout>
-                <Header>
-                    <Pagination 
-                        showQuickJumper 
-                        current = {curPage}
-                        defaultCurrent={curPage} 
-                        defaultPageSize={20} 
-                        total={totalPage}
-                        showSizeChanger={false}
-                        onChange={onChange} />
-                </Header>
-                <Content>
-                    <MoiveList list={sortType!=='Filter'?(sortedList[curPage]  || []):(listToShow[curPage] || [])}/>
-                </Content>
-                <Footer>Footer</Footer>
+                <Sider className="page-sider">
+                    <Sort setSortType={setSortType} sortType={sortType} setCurPage={setCurPage}/>
+                </Sider>
+                <Layout>
+                    <Header>
+                        <Pagination 
+                            showQuickJumper 
+                            current = {curPage}
+                            defaultCurrent={curPage} 
+                            defaultPageSize={20} 
+                            total={sortType==='Filter' ? nums : totalPage}
+                            showSizeChanger={false}
+                            onChange={onChange} />
+                    </Header>
+                    <Content>
+                        <MoiveList list_type={list_type} list={sortType!=='Filter'?(sortedList[curPage]  || []):(listToShow[curPage] || [])}/>
+                    </Content>
+                </Layout>
             </Layout>
         </Layout>
     </>);
@@ -117,13 +113,15 @@ const MovielistPage = ({list_name, API, listToShow, addPageToList})=> {
 const mapStateToProps = (state, ownProps) => {
     const { list_name } = ownProps;
     return {
-        listToShow: state[list_name]
+        listToShow: state[list_name],
+        nums: state.total_results[list_name]
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         addPageToList: (name, page, value) => dispatch(actions.addPageToList(name, page, value)),
+        addResultsNumToList: (list_name, num) => dispatch(actions.addResultsNumToList(list_name, num)),
     };
 };
 
