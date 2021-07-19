@@ -87,7 +87,7 @@ const MovielistPage = ({title, list_type, list_name, API, listToShow, nums, addP
         <Layout>
             <Header className="movie-list-title">{title}</Header>
             <Layout>
-                <Sider className="page-sider">
+                <Sider className="page-sider" width='300'>
                     <Sort setSortType={setSortType} sortType={sortType} setCurPage={setCurPage}/>
                 </Sider>
                 <Layout>
