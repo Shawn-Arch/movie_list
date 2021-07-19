@@ -1,0 +1,45 @@
+.row {
+    margin-top: 40px;
+}
+
+.list-title {
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+}
+
+.ant-row {
+    position: relative;
+    width: 100%;
+}
+
+.icon {
+    position: absolute;
+    z-index: 1;
+    border: 2px solid white;
+    top: 50%;
+    transform: translate(0,-100%);
+}
+
+.left-icon {
+    left: 15px;
+}
+
+.right-icon {
+    right: 35px;
+}
+
+.icon svg {
+    background-color: rgba(255,255,255,0.3);
+    width: 30px;
+    height: 50px;
+    color: white;
+}
+
+.icon svg:hover {
+    color: #666600;
+}
